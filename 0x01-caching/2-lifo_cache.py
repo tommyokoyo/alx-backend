@@ -10,6 +10,7 @@ class LIFOCache(BaseCaching):
         FIFOCache class that inherits from BaseCaching
     """
     last_key_added = ''
+
     def __init__(self):
         """
             initialize
