@@ -1,14 +1,15 @@
 #!/usr/bin/python
 """
-    LRU cache class
+    MRU cache class
 """
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-        LRUcache class that inherits from BaseCaching
-        discards the least recently used items in the cache
+        MRUcache class that inherits from BaseCaching
+        discards the most recently used items in the cache
+
     """
     usage_counter = {}
 
@@ -33,10 +34,10 @@ class LRUCache(BaseCaching):
                 self.cache_data[key] = item
                 self.usage_counter[key] = 0
             else:
-                least_used_key = min(self.usage_counter, key=self.usage_counter.get)
-                del self.cache_data[least_used_key]
-                del self.usage_counter[least_used_key]
-                print("DISCARD: " + least_used_key)
+                most_used_key = max(self.usage_counter, key=self.usage_counter.get)
+                del self.cache_data[most_used_key]
+                del self.usage_counter[most_used_key]
+                print("DISCARD: " + most_used_key)
                 self.cache_data[key] = item
                 self.usage_counter[key] = 0
         else:
